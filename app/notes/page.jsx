@@ -1,0 +1,4 @@
+import { getContent } from '../../lib/store';
+import { PageIntro,NoteCard,CTA } from '../../components/ui';
+export const metadata={title:'Build notes'};
+export default async function Notes(){const {notes}=await getContent();return <><PageIntro number="04" kicker="Notes from the build desk" title="Thinking out loud." italic="Making things clearer." description="Short perspectives on building useful products, connecting systems, and giving AI a practical purpose. A little context behind the work."/><section className="wrap pb-24"><div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{notes.map(n=><NoteCard key={n.slug} note={n}/>)}</div>{!notes.length&&<p className="rounded-xl border border-line p-10 text-center text-muted">New notes are on the way.</p>}</section><CTA title="Something on your mind?" italic="Let’s talk it through."/></>;}
